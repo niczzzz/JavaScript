@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Main page</title>
+</head>
+<body>		
+	<div id="header" style="text-align: right;"></div>
+	<h1>Hello</h1>
+
+	<script>
+		function logout() {
+			localStorage.clear();
+			//console.log(location.href);
+			let url = location.href;
+			let n = url.lastIndexOf('/');
+			let result = url.slice(0, n);
+			//console.log(result);
+			location.href = result + "/login.html";
+		}
+
+		if(localStorage.getItem("user"))
+		{
+			let content = document.querySelector("h1");
+			content.innerText = "Hello, " + localStorage.getItem("user");
+			
+			document.querySelector("#header").innerHTML = "<button onclick='logout()'>logout</button>";
+
+		}
+		else
+		{
+			logout();
+		}
+		if (localStorage.getItem("remember") == 0)
+		{
+			localStorage.clear();
+		}
+
+	</script>
+
+</body>
+</html>

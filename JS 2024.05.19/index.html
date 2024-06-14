@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+	<META charset="utf-8">
+	<META name="viewport" content="width=device-width, initial-scale=1">
+	<title>Hello, World!</title>
+	<script src="script.js"></script>
+</HEAD>
+<body>
+	
+	<div class="main">
+		<h1>До конца года осталось</h1>
+
+			<div class="countdown_timer">
+
+				<div class="timer"> <h2 id="day">00</h2><p>дней</p></div>
+				<div class="timer"> <h2 id="hour">00</h2><p>часов</p></div>
+				<div class="timer"> <h2 id="min">00</h2><p>минут</p></div>
+				<div class="timer"> <h2 id="sec">00</h2><p>секунд</p></div>
+			</div>
+
+	</div>
+
+	<p id="q">text</p>
+
+	<script>
+
+		let day = document.getElementById("day")
+		let hour = document.getElementById("hour")
+		let min = document.getElementById("min")
+		let sec = document.getElementById("sec")
+
+		let currentYear = new Date().getFullYear();
+		let newYear = new Date(`1 Jan ${currentYear + 1} 00:00:00`)
+
+		function countdown_timer() {
+			let todayDate = Date.now();
+			let difference = newYear - todayDate;
+			let d = Math.floor(difference/1000/60/60/24);
+			let h = Math.floor((difference/1000/60/60)%24);
+			let m = Math.floor((difference/1000/60)%60);
+			let s = Math.floor((difference/1000)%60);
+
+			day.innerHTML = d < 10 ? "0"+d : d;
+			hour.innerHTML = h < 10 ? "0"+h : h;
+			min.innerHTML = m < 10 ? "0"+m : m;
+			sec.innerHTML = s < 10 ? "0"+s : s;
+			
+		}
+
+		setInterval(countdown_timer, 1000);
+
+
+		//let x = document.getElementById("q");
+
+		//x.innerText = "newText";
+
+		//console.log(document.title);
+		//console.log(document.head);
+
+
+		/*
+		const x = 15; //коммент
+
+		let str1 = "hello";
+		let str2 = 'hello';
+		let str3 = str1 + str2;
+		console.log(str3);
+
+
+		let t = false;
+
+
+		
+		//alert(x);
+
+		//let age = prompt("введите возраст:", 45);
+		//alert(`тебе ${age} лет`);
+
+		//let a = confirm('Сейчас идет дождь?');
+		//alert(a);
+
+		//let b = String(x);
+		//console.log(b);
+		//console.log(typeof b);
+
+		//if (x == 15)
+		//{
+		//	console.log('if');
+		//}
+		//else
+		//{
+		//	console.log('else');
+		//}
+
+		//let y = (x == 15) ? 8 : 2;
+		//console.log(y);
+
+		//let i = 0;
+
+		//while (i<10)
+		//{
+			alert(i);
+			i++;
+		}
+
+		for (let i=0; i<5; i++)
+		{
+			console.log(i);
+		}
+		*/
+//==================================================================================================
+
+		/*
+		let a = 7 + 1;
+		switch(a)
+		{
+			case 5:
+			case 6:
+				console.log("hello!");
+				break;
+			case 8:
+				console.log("world");
+				break;
+		}
+
+		function message(a){
+			alert('hello');
+		}
+		
+		function message(a, b){
+			alert(a+' '+b);
+		}
+
+		message(a);
+		message("hello", "world");
+
+		let Arr = new Array();
+		Arr[0] = 1;
+
+		let numb = [1,3,2,4];
+
+		console.log(numb);
+
+		numb.forEach((num)=> {
+			console.log(num);
+		})
+
+		numb.sort();
+		console.log(numb);
+
+		let str = "hello";
+
+		function HW() {
+			alert("hello world!");
+		}
+
+		setTimeout(alert("hello world!"), 1000000);
+		*/
+	</script>
+</body>
+</html>

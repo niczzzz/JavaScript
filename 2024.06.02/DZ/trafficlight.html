@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Traffic Light</title>
+	<style>
+		.light {
+			width: 200px;
+			height: 200px;
+			border: 5px solid;
+			background: gray;
+			border-radius: 50%;
+			}
+
+		button {
+			width: 200px;
+			height: 200px;
+			border: 5px solid;
+			border-radius: 20%;
+		}
+
+		.trafficLight {
+			width: 600px;
+			height: 200px;
+			border: 20px solid;
+			border-radius: 20px;
+		}
+	</style>
+</head>
+<body>
+	<table class="trafficLight">
+		<th>
+			<div class= light></div>
+		</th>	
+		<th>
+			<div class= light></div>
+		</th>	
+		<th>
+			<div class= light></div>
+		</th>	
+		<th>
+			<button id= clickBtn>NEXT</button>
+		</th>
+	</table>
+<script>
+	let i = -1;	
+
+	clickBtn.addEventListener("click", function() {
+		i++;
+	let light = document.querySelectorAll('.light')
+	let colors = ["green", "yellow", "red"];
+		if(light[i-1]) light[i-1].style.background = "gray";
+		if(i == colors.length) i = 0;
+		light[i].style.background = colors[i];
+	})
+
+</script>
+
+</body>
+</html>

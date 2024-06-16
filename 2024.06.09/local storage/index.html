@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Main page</title>
+	<title>home</title>
 </head>
-<body>		
+<body>
 	<div id="header" style="text-align: right;"></div>
-	<h1>Hello</h1>
+	<h1></h1>
 
 	<script>
 		function logout() {
@@ -17,18 +17,17 @@
 			let n = url.lastIndexOf('/');
 			let result = url.slice(0, n);
 			//console.log(result);
-			location.href = result + "/login.html";
+			location.href = result+"/login.html";
 		}
 
-		if(localStorage.getItem("user"))
+		if (localStorage.getItem("user"))
 		{
 			let content = document.querySelector("h1");
-			content.innerText = "Hello, " + localStorage.getItem("user");
-			
-			document.querySelector("#header").innerHTML = "<button onclick='logout()'>logout</button>";
+			content.innerText = "Hello " + localStorage.getItem("user");
 
+			document.querySelector("#header").innerHTML = "<button onclick='logout()'>logout</button>";
 		}
-		else
+		else 
 		{
 			logout();
 		}
@@ -38,6 +37,5 @@
 		}
 
 	</script>
-
 </body>
 </html>

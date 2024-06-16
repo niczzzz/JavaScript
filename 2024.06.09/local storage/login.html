@@ -6,34 +6,34 @@
 	<title>login</title>
 </head>
 <body>
+
 	<form onsubmit="submitForm()" method="POST" action="index.html">
 		<label>login:</label><br>
 		<input type="text" name="login" required><br><br>
 		<label>password:</label><br>
-		<input type="text" name="password"><br><br>
+		<input type="password" name="password"><br><br>
 		<label>Remember me</label>
 		<input type="checkbox" name="remember"><br><br>
 		<input type="submit" value="login">
 	</form>
 
-<script >
-	function submitForm() {
-		let data = document.querySelector('input[name=login]').value;
-		localStorage.setItem("user", data);
+	<script>
+		
+		function submitForm() {
+			let data = document.querySelector('input[name=login]').value;
+			localStorage.setItem("user", data);
 
-		if(document.querySelector('input[name=remember]').checked)
-		{
-			localStorage.setItem("remember", 1);
+			if(document.querySelector('input[name=remember]').checked)
+			{
+				localStorage.setItem("remember", 1);
+			}
+			else
+			{
+				localStorage.setItem("remember", 0);
+			}
 		}
-		else
-		{
-			localStorage.setItem("remember", 0);
-		}
-	}
 
-
-</script>
-
+	</script>
 
 </body>
 </html>

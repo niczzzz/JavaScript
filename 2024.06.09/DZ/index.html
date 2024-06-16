@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Confirm email</title>
+</head>
+<body>		
+	<div id="header" style="text-align: left;"></div>
+	<h1><button onclick='signup()'>Sign Up</button></h1>
+
+	<script>
+		function signup() {
+			let url = location.href;
+			let n = url.lastIndexOf('/');
+			let result = url.slice(0, n);			
+			location.href = result + "/signup.html";
+		}
+
+		function goback() {
+			localStorage.clear();
+			let url = location.href;
+			let n = url.lastIndexOf('/');
+			let result = url.slice(0, n);
+			location.href = result + "/index.html";
+		}
+
+		if(localStorage.getItem("email"))
+		{
+			let content = document.querySelector("h1");
+			content.innerText = "На почту " + localStorage.getItem("email") + " отправлено письмо с подтверждением.";
+			
+			document.querySelector("#header").innerHTML = "<button onclick='goback()'>Go back</button>";
+			localStorage.clear();
+
+		}
+		else
+		{
+			document.querySelector("#header").innerHTML = "<button onclick='goback()'>Go back</button>";
+			localStorage.clear();
+		}
+
+	</script>
+
+</body>
+</html>

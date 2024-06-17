@@ -11,22 +11,28 @@
 			box-sizing: border-box;			
 		}
 		#canvas {
-			border: 5px solid black;
+			border: 5px solid black;		 			
 		}
 	</style>
 </head>
 <body>
 
-	<canvas id="canvas"></canvas>
-	<button id="cls">clear</button>
+	<div>
+		<canvas id="canvas"></canvas>
+	</div>
+	<label>Select color: <input type="color" id="colorPicker" value="#000000"></label>
+	<label>Line width: <input type="number" id="lineWidth" min="1" value="10"></label>
+	<button id="cls">Clear canvas</button>
 
 	<script>
 		window.addEventListener("load", function() {
 			const canvas = document.getElementById('canvas');
 			const cmd = canvas.getContext("2d");
+			const colorPicker = document.getElementById('colorPicker');
+			const lineWidth = document.getElementById('lineWidth');
 
-			canvas.height = window.innerHeight;
-			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight - 50;
+			canvas.width = window.innerWidth - 10;
 			
 			//cmd.fillRect(100, 100, 200, 200);
 			//cmd.strokeStyle = "red";
@@ -54,13 +60,18 @@
 				cmd.lineWidth = 10;
 				cmd.lineCap = "round";
 
-				cmd.lineTo(event.clientX, event.clientY);
-				cmd.stroke();					
+				cmd.lineTo(event.clientX-5, event.clientY-5);
+				cmd.strokeStyle = colorPicker.value;
+				cmd.lineWidth = lineWidth.value;
+				cmd.stroke();
 			}
 
 			canvas.addEventListener("mousedown", startPosition);
 			canvas.addEventListener("mouseup", endPosition);
 			canvas.addEventListener("mousemove", draw);
+
+			colorPicker.addEventListener('change', () => cmd.strokeStyle = colorPicker.value);
+			lineWidth.addEventListener('change', () => cmd.lineWidth = lineWidth.value);
 
 			let cls = document.getElementById('cls');
 			cls.addEventListener("click", function(){
@@ -73,5 +84,3 @@
 
 </body>
 </html>
-
-//https://habr.com/ru/articles/147032/

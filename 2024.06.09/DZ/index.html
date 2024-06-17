@@ -18,7 +18,7 @@
 		}
 
 		function goback() {
-			localStorage.clear();
+			//localStorage.clear();
 			let url = location.href;
 			let n = url.lastIndexOf('/');
 			let result = url.slice(0, n);
@@ -36,7 +36,7 @@
 		}
 		else
 		{
-			document.querySelector("#header").innerHTML = "<button onclick='goback()'>Go back</button>";
+			//document.querySelector("#header").innerHTML = "<button onclick='goback()'>Go back</button>";
 			localStorage.clear();
 		}
 

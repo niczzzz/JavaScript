@@ -6,7 +6,7 @@
 	<title>Sign up</title>
 </head>
 <body>
-	<form onsubmit="submitForm()" method="POST" action="index.html">		
+	<form onsubmit="submitForm()" method="POST" action="index.html">
 		<table>
 		<tr>
 			<td><label>Your email:</label><br>
@@ -18,24 +18,46 @@
 		<tr>
 			<td>
 				<label>Your password:</label><br>
-				<input type="text" name="password" required>
+				<input type="password" id="pwd" name="pwd" required>
 			</td>
 			<td>
 				<label>Repeat password:</label><br>
-				<input type="text" name="password-confirm" required>
+				<input type="password" id="pwd2" name="pwd2" required>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<br><input type="submit" value="Sign Up">
 			</td>
+			<td>
+			<input type="checkbox" onclick="myFunction()">Show Password
+			</td>
 		</tr>		
 		</table>	
 	</form>
 
-<script >
+<script>
+	function myFunction() {
+	    var x = document.getElementById("pwd");
+	    if (x.type === "password") {
+	        x.type = "text";
+	    } else {
+	        x.type = "password";
+	    }
+	    var y = document.getElementById("pwd2");
+	    if (y.type === "password") {
+	        y.type = "text";
+	    } else {
+	        y.type = "password";
+	    }
+
+
+}	
+
+
+
 	function submitForm() {
-		if(document.querySelector('input[name=password]').value==document.querySelector('input[name=password-confirm]').value)
+		if(document.querySelector('input[name=pwd]').value==document.querySelector('input[name=pwd2]').value)
 		{
 			let url = location.href;
 			let n = url.lastIndexOf('/');
@@ -44,11 +66,14 @@
 
 			let data = document.querySelector('input[name=email]').value;
 			localStorage.setItem("email", data);
+
 		}
 		else
 		{
 			alert('Пароли должны совпадать!');
+			event.preventDefault();
 		}
+
 	}
 </script>
 

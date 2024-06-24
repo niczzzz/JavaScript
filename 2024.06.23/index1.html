@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Product list</title>
+
+        <style>
+            .container {
+                display: inline-block;
+            }
+            .card {
+                float: left;
+                border: 3px solid;
+                border-radius: 5px;
+                margin: 5px;
+                padding: 5px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Product list</h1>
+        <hr>
+        <label>Type of sort:</label>
+        <select id="sortBy">
+            <option value="0">id</option>
+            <option value="1">price</option>
+            <option value="2">name</option>
+        </select>
+
+        <button onclick="sort()">Sort</button>
+        <hr>
+        <div class="container">
+
+        </div>
+
+        <script>
+            const names = ["apple", "pear", "lemon", "banana", "mango", "orange", "lime", "avocado"];
+            const products = [];
+
+            for (let i=0; i<names.length; i++)
+            {
+                products.push({
+                    id: i+1,
+                    name: names[i],
+                    price: Math.floor(Math.random() * 1000)
+                });
+            }
+
+            console.log(products);
+
+            let container = document.querySelector('.container');
+
+            function print(arr){
+                container.innerHTML = "";
+                for (let i = 0; i<arr.length; i++)
+                {
+                    container.innerHTML += `<div class='card'>
+                        <h3>${arr[i].id}</h3>
+                        <h3>${arr[i].name}</h3>
+                        <h3>${arr[i].price} $</h3>
+                        </div>`;
+                }
+            }
+
+            print(products);
+
+            function sort() {
+                let e = document.getElementById("sortBy");
+                //console.log(e.value);
+                let key = e.options[e.selectedIndex].text;
+                //console.log(key);
+
+                const sorted = products.sort((products1, products2) => products1[key] > products2[key] ? 1 : -1);
+                print(sorted);
+            }
+
+            
+        </script>
+    </body>
+</html>

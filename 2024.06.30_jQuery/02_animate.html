@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+	<style>
+		.block {
+			position: absolute;
+			background: green;
+			left: 50px;
+			margin: 5px;
+			width: 100px;
+			height: 200px;
+		}
+
+	</style>
+</head>
+<body>
+	<div>Lorem ipsum</div>
+	<div>dolor sit amet</div>
+	<div>consectetur adipiscing</div>
+	<div>eiusmod tempor</div>
+
+	<hr>
+	<p onclick="$('div').fadeIn(500);">показать все строки</p>
+
+	<hr>
+	<p onclick="$('div').animate({height: 100, width: 100}, 1000);">square</p>
+	<p onclick="$('div').animate({height: 50, width: 120}, 1000);">rect</p>
+	<div style="width:150px; height:40px; border: 3px solid;"></div>
+
+	<hr>
+	<button id="left">left</button>
+	<button id="right">right</button>
+	<div class="block"></div>
+
+<script>
+	$('#left').click(function() {
+		$('.block').animate({"left": "-=50px"}, "slow");
+	});
+
+	$('#right').click(function() {
+		$('.block').animate({"left": "+=50px"}, "slow");
+	});
+</script>
+
+
+
+
+
+<script>
+	$('div').click(function() {
+		$(this).fadeOut(500);
+	});
+</script>	
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Football</title>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+	<style type="text/css">
+		.ball {
+			position: absolute;
+			top: calc(50% - 50px);
+			width: 100px;
+			height: 100px;
+			background-image: url('ball.png');
+			z-index: 2;
+		}
+		.gates {
+			position: absolute;
+			top: calc(50% - 275px);
+			left: 50%;
+			width: 300px;
+			height: 550px;
+			background-image: url('gates.png');
+			z-index: 1;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="ball"></div>
+	<div class="gates"></div>
+
+<script>
+	let gatesLeft = parseInt($(".gates").css("left"));
+	//console.log(left)
+	let gatesRight = gatesLeft + $(".gates").width();
+	//console.log(right)
+	let gatesTop = parseInt($(".gates").css("top"));
+	//console.log(top);
+	let gatesBottom = gatesTop + $(".gates").height();
+	//console.log(bottom);
+
+	function check_event() {
+		let centerX = parseInt($(".ball").css("left")) + ($(".ball").width())/2;
+		//console.log(centerX);
+
+		let centerY = parseInt($(".ball").css("top")) + ($(".ball").height())/2;
+		console.log(centerY);
+
+		if (centerX>gatesLeft && centerX<gatesRight && centerY>gatesTop && centerY<gatesBottom)
+		{
+			alert('Goooal!');
+		}
+	}
+
+	$(document).keydown(function(event) {
+		if(event.which == 37) {
+			$('.ball').animate({"left": "-=50px"});
+			check_event();
+		}
+		if(event.which == 39) {
+			$('.ball').animate({"left": "+=50px"});
+			check_event();
+		}
+		if(event.which == 38) {
+			$('.ball').animate({"top": "-=50px"});
+			check_event();
+		}
+		if(event.which == 40) {
+			$('.ball').animate({"top": "+=50px"});
+			check_event();
+		}
+
+
+	})
+
+</script>	
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+	<div id="myDiv">myDiv</div>
+	<div class="myClass">myClass</div>
+	<p>paragraph</p>
+	<ul>
+		<li>a</li>
+		<li>b</li>
+		<li>c</li>
+		<li>d</li>
+		<li>e</li>
+		<li>f</li>
+	</ul>
+	<ol class="x">
+		<li>a</li>
+		<li>b</li>
+		<li>c</li>
+	</ol>
+
+	<button id="myBtn">click</button>
+	<input type="text" name="">
+
+<script>
+	let div = $('#myDiv');
+	console.log(div.text());
+
+	let cl = $('.myClass');
+	console.log(cl.text());
+
+	let p = $('p');
+	console.log(p.text());
+
+	let el = $('li').slice(0,3);
+
+	$('#myDiv').css('color', 'red');
+
+	$('ul').append('<li>New</li>');
+
+	$('.x').remove();
+
+	$('#myDiv').addClass('newClass');
+	$('#myDiv').removeClass('newClass');
+	
+	$('#myDiv').hide();
+	$('#myDiv').show();
+
+	$('#myBtn').on('click', function () {
+		console.log('нажата кнопка');
+	});
+
+	$('#myBtn').on('mouseenter', function () {
+		console.log('наведена мышь');
+	});
+
+	$('input').on('change', function () {
+		console.log('изменено значение');
+	});
+
+</script>	
+
+</body>
+</html>

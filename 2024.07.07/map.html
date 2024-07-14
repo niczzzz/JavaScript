@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Быстрый старт. Размещение интерактивной карты на странице</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=03297409-19bc-446c-91a6-07ce952b5ec2&lang=ru_RU" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        ymaps.ready(init);
+        function init(){
+            var myMap = new ymaps.Map("map", {
+                center: [55.355392, 86.077729],
+                zoom: 10
+            });
+
+            var myGeoObject = new ymaps.GeoObject({
+                geometry: {
+                    type: "Point", // тип геометрии - точка
+                    coordinates: [55.355392, 86.077729] // координаты точки
+                }
+            });
+
+            myMap.geoObjects.add(myGeoObject);
+
+            var data = ymaps.geoXml.load("https://sandbox.api.maps.yandex.net/examples/ru/2.1/geoxml_display/geoObjects.gpx");
+
+            // Обработка полученного асинхронно ответа.
+            data.then(function(res) {
+            // Добавление объектов на карту.
+            myMap.geoObjects.add(res.geoObjects);
+            });
+
+
+
+        }        
+
+    </script>
+</head>
+
+<body>
+    <div id="map" style="width: 1000px; height: 800px"></div>
+</body>
+
+</html>
